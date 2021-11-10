@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Cuadrimotos Clientes</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="./scripts/functiones.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="./css/bootstrap.css" rel="stylesheet">
+    <script src="./js/bootstrap.bundle.js"></script>
+    <link href="./css/estilos.css" rel="stylesheet">
+
+</head>
+
+<body style="background-color: #f7f7f7">
+
+    <script type="text/javascript"> 
+        window.onload = traerInformacionCuadri();
+    </script>
+
+    <!-- encabezado -->
+    <div class="container shadow-lg style="background-color: #f7f7f7">
+        <div class="row tipo1 p-5 style="background-color: #f7f7f7">
+            <div class="col-lg-2 shadow-lg tipo2 style="background-color: #f7f7f7">
+            <div class="col-lg-8 p-5 bg-transparent text-black">
+                <p class="display-5 text-center">Administración de Clientes</p>
+            </div>
+        </div>
+    </div>
+    <!-- encabezado -->
+
+<!-- tabla -->
+    <script type="text/javascript"> 
+        window.onload = traerInformacionCliente();
+    </script>
+<!-- tabla -->
+
+    <!-- tabla -->
+    <div class="container  shadow-lg style="background-color: #f7f7f7">
+        <br>
+            <div id="resultado3"></div>
+        <br>
+    </div>
+    <!-- tabla -->
+
+<div class="container shadow-lg style="background-color: #f7f7f7">
+    <button class="btn btn-secondary" type="submit"onclick="traerInformacionCliente()">Consultar</button>
+</div>
+
+<div class="container shadow-lg style="background-color: #f7f7f7">
+    <form class="row g-3 needs-validation" novalidate>
+        
+        <div class="col-md-2 mb-5 position-relative style="background-color: #f7f7f7">
+            <label for="idCliente">Nº Cliente</label>
+            <input type="number" class="form-control" id="idCliente" disabled="disabled">
+            <div class="valid-tooltip">Campo Válido</div>
+            <div class="invalid-tooltip">Campo Vacío</div>
+        </div>
+
+        <div class="col-md-2 mb-5 position-relative style="background-color: #f7f7f7">  
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" maxlength=32 required>
+            <div class="valid-tooltip">Campo Válido</div>
+            <div class="invalid-tooltip">Campo Vacío</div>
+        </div>
+
+        <div class="col-md-2 mb-5 position-relative style="background-color: #f7f7f7">  
+            <label for="descripcion">Correo</label>
+            <input type="email" class="form-control" id="correo" maxlength=32 required>
+            <div class="valid-tooltip">Campo Válido</div>
+            <div class="invalid-tooltip">Campo Vacio o No es Correo</div>
+        </div>
+
+        <div class="col-md-2 mb-5 position-relative style="background-color: #f7f7f7">  
+            <label for="descripcion">Clave</label>
+            <input type="text" class="form-control" id="clave" maxlength=16 required>
+            <div class="valid-tooltip">Campo Válido</div>
+            <div class="invalid-tooltip">Campo Vacío</div>
+        </div>
+
+        <div class="col-md-2 mb-5 position-relative style="background-color: #f7f7f7">  
+            <label for="descripcion">Edad</label>
+            <input type="number" class="form-control" id="edad" required>
+            <div class="valid-tooltip">Campo Válido</div>
+            <div class="invalid-tooltip">Campo Vacío</div>
+        </div>
+        
+        <div>
+            <button type="submit" class="btn btn-secondary" name="guardar">Guardar</button>
+            <button type="submit" class="btn btn-secondary" name="editar" >Actualizar</button>
+            <a class="btn btn-secondary" role="button" onclick="limpiarElementoCliente()">Limpiar</a>
+            <a class="btn btn-secondary" href="index.html"  role="button">Regresar</a>
+            <br> 
+        </div>
+    </form>
+    <br>
+</div>
+
+<script>
+    
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+    'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+        }
+        else{
+            
+            if(event.submitter.name=="guardar"){
+                
+                guardarInformacionCliente();
+            }
+            if(event.submitter.name=="editar"){
+                editarInformacionCliente();
+            }
+        }
+        form.classList.add('was-validated')
+        }, false)
+    })
+})()
+</script>
+
+<!--
+<div class="container shadow-lg">
+    
+    <div class="row">
+        <div class="col-md-2">  
+            <label>Nº Cuad.<input type="number" id="idCliente"name="idCliente" disabled="disabled"></label>
+        </div>
+        <div class="col-md-2">  
+            <label>Nombre<input type="text" id="nombre"name="nombre"></label>
+            
+        </div>
+        <div class="col-md-2">  
+            <label>Correo<input type="email" id="correo" name="correo"></label>
+            
+        </div>
+        <div class="col-md-2">  
+            <label>Clave<input type="text"  id="clave"name="clave"></label>
+            
+        </div>
+        <div class="col-md-2">  
+            <label>Edad<input type="number"  id="edad"name="edad"></label>
+            
+        </div>
+        
+    </div>
+    
+</div>
+
+<div class="container shadow-lg">
+    <button class="btn btn-secondary" type="submit"onclick="guardarInformacionCliente()">Guardar</button>
+    <button class="btn btn-secondary" type="submit"onclick="editarInformacionCliente()">Actualizar</button>
+    <button class="btn btn-secondary" type="submit"onclick="limpiarElementoCliente()">Limpiar</button>
+    
+    <a class="btn btn-secondary" href="index.html" role="button">Regresar</a>
+</div>
+-->
+
+</body>
+</html>

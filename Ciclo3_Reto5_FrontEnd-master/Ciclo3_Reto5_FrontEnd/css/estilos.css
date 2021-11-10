@@ -1,0 +1,32 @@
+
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+    background-color:#f7f7f7;
+}
+.table-striped>tbody>tr:nth-child(even)>td,
+.table-striped>tbody>tr:nth-child(even)>th {
+    background-color:#f7f7f7;
+}
+.table-striped>thead>tr>th {
+    background-color:#f7f7f7;
+}
+.table-bordered>thead>tr>th {
+    background-color:#f7f7f7;
+}
+.table-bordered>tbody>tr>th {
+    background-color:#f7f7f7;
+}
+.tipo1 {
+    background-color:#f7f7f7;
+} 
+
+.tipo2 {
+    background-color:#f7f7f7;
+} 
+
+.tipo3 {
+    color:rgb(20, 18, 104);
+} 
+.centrar {
+    text-align: center
+    }
